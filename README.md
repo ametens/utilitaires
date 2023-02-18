@@ -9,7 +9,6 @@ Is a script based on the excellent Youtube module (pytube) and the interface mak
 
 Great to store the file on your hard drive in case of a cut of Internet connection...
 
-Here is the screenshot of the window:
 ![Screenshot of the main window](https://github.com/ametens/utilitaires/blob/129d5cb47cd076d4fc9da3ea03f724c9ac587447/main_window.png)
 
 
