@@ -1,24 +1,25 @@
 from pytube import YouTube, Playlist
 import PySimpleGUI as gui
 
-
+#
+# draw the layout of the window
+#
 frame_layout_1 = [[gui.In(font='NewsGothicMT 16'),gui.Push()]]
-
 frame_layout_2 = [[gui.Radio('a playlist', 'RADIO1', default=True,font='NewsGothicMT 16'),gui.Radio('a single song', 'RADIO1', default=False, key="-SONG-",font='NewsGothicMT 16'),gui.Push()]]
-
 frame_layout_3 = [
     [gui.In(font='NewsGothicMT 16', key='-PLAYLIST-'),
      gui.FolderBrowse(button_text='Browse',key='-BROWSE-',font='NewsGothicMT 14',size=9, initial_folder='/Users/arnaud/Music'),gui.Push()]]
-
 frame_layout_4 = [
     [gui.Push(),gui.Output(size=(70, 10),font='NewsGothicMT 12'),gui.Push()],
     [gui.Push(),
         gui.B('Download',font='NewsGothicMT 14',size=9),
         gui.B('Cancel',font='NewsGothicMT 14',size=9),
         gui.B('Close',font='NewsGothicMT 14',size=9),
-        gui.Push()]
-]
+        gui.Push()]]
 
+#
+# main layout
+#
 layout = [    
     [gui.Frame('Paste a url from Youtube', frame_layout_1,relief='flat', font='NewsGothicMT 16')],
     [gui.Frame('What are you downloading?', frame_layout_2,relief='flat', font='NewsGothicMT 16')],
@@ -26,24 +27,35 @@ layout = [
     [gui.Frame('', frame_layout_4,relief='ridge', font='NewsGothicMT 16')],
 ]
 
+#
+# start drawing the window
+#
 window = gui.Window('Download an audio playlist/song/podcast from YouTube', layout)
+
 
 while True:
 
     event, values = window.read()  
 
+    #listen for specials events
+    #(by example, push a particular button)
+    #
     if event in (gui.WIN_CLOSED, 'Cancel') :
         break   
 
     elif event in (gui.WIN_CLOSED, 'Close') :
         window.close()
 
-    elif values['-SONG-'] == False:        
+    elif values['-SONG-'] == False: #Is it a playlist or single song/podcast/audio file?       
+        
+        #
+        #start evaluating the download of PLAYLIST
+        #
         try:
             oplaylist = Playlist(values[0])
         except:
             print('Reading Error!')
-            window.refresh()
+            window.refresh() 
             
         else:
             print('\r','*'*3,'Playlist','*'*3)
@@ -62,13 +74,18 @@ while True:
                 window.refresh()
             else:
                 print('5. Content of the playlist:')
-                window.refresh()
+                window.refresh()#display the message in real time
+                
+                
                 for i in vl:
                     c = c + 1
                     i_yt = YouTube(i)
 
                     for s in i_yt.streams.filter(only_audio=True):
                         try:
+                            #
+                            #choose the highest quality for AUDIO FILE (video excluded!)
+                            #
                             stream_to_dwnld = i_yt.streams.get_by_itag(140)
                             stream_to_dwnld.download(output_path=values['-PLAYLIST-'])
                                                             
@@ -106,6 +123,9 @@ while True:
                 
                 window.close()
     else:
+        #
+        #start evaluating the download of SINGLE AUDIO FILE
+        #
         try:
             osingle = YouTube(values[0])
         except:
