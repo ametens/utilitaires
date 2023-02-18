@@ -1,7 +1,7 @@
-# Utilitaires
+# Utilities
 Some ideas, utilities to work with python
 
-## Script
+## Scripts
 
 [**dfy.py**](https://github.com/ametens/utilitaires/blob/0311ab4f54152793b43c91cda654074fc8d12e1c/dfy.py)
 
