@@ -3,7 +3,7 @@ Some ideas, utilities to work with python
 
 ## Script
 
-**dfy.py**
+[**dfy.py**](https://github.com/ametens/utilitaires/blob/0311ab4f54152793b43c91cda654074fc8d12e1c/dfy.py)
 
 Is a script based on the excellent Youtube module ([pytube](https://pytube.io/en/latest/api.html)) and the interface maker for python called ([PySimpleGUI](https://www.pysimplegui.org/en/latest/call%20reference/)).  It allows to paste a playlist url from Youtube and download in mp4 format all the audio files from this one.
 
