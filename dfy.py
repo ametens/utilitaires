@@ -10,7 +10,7 @@ frame_layout_3 = [
     [
         gui.In(font='NewsGothicMT 16', key='-PLAYLIST-'),
         
-        #Set inital_folder if you want the browse folder start the search in a specific folder
+        #Set inital_folder if you want the browse folder button start the search in a specific folder
         gui.FolderBrowse(button_text='Browse',key='-BROWSE-',font='NewsGothicMT 14',size=9, initial_folder=''), 
         
         gui.Push()]
