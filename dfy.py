@@ -7,8 +7,14 @@ import PySimpleGUI as gui
 frame_layout_1 = [[gui.In(font='NewsGothicMT 16'),gui.Push()]]
 frame_layout_2 = [[gui.Radio('a playlist', 'RADIO1', default=True,font='NewsGothicMT 16'),gui.Radio('a single song', 'RADIO1', default=False, key="-SONG-",font='NewsGothicMT 16'),gui.Push()]]
 frame_layout_3 = [
-    [gui.In(font='NewsGothicMT 16', key='-PLAYLIST-'),
-     gui.FolderBrowse(button_text='Browse',key='-BROWSE-',font='NewsGothicMT 14',size=9, initial_folder='/Users/arnaud/Music'),gui.Push()]]
+    [
+        gui.In(font='NewsGothicMT 16', key='-PLAYLIST-'),
+        
+        #Set inital_folder if you want the browse folder start the search in a specific folder
+        gui.FolderBrowse(button_text='Browse',key='-BROWSE-',font='NewsGothicMT 14',size=9, initial_folder=''), 
+        
+        gui.Push()]
+]
 frame_layout_4 = [
     [gui.Push(),gui.Output(size=(70, 10),font='NewsGothicMT 12'),gui.Push()],
     [gui.Push(),
