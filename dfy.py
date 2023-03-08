@@ -19,8 +19,14 @@ if (isPlst > 0):
         oplaylist = Playlist(ans)
         vl = oplaylist.trimmed(oplaylist.playlist_url)
         c = 0
-        r = str()        
-        parent_dir = '/Users/arnaud/Music'
+        r = str() 
+        
+        #
+        # Change parent_dir variable with your favorite musi base directory!
+        #
+        parent_dir = '' # <-- paste URI here
+        
+        
         artist = input("> Artist/author name?")
         playlist_name = input("> Playlist/album name?")
         destination_folder = os.path.join(parent_dir, artist+'/'+playlist_name)
@@ -50,7 +56,12 @@ else:
     # download single album/file
     try:
         osingle = YouTube(ans)
-        parent_dir = '/Users/arnaud/Music'
+        
+        #
+        # Change parent_dir variable with your favorite musi base directory!
+        #
+        parent_dir = '' # <-- paste URI here
+        
         artist = input("> Artist/author name?")
         playlist_name = input("> Playlist/album name?")
         destination_folder = os.path.join(parent_dir, artist+'/'+playlist_name)
